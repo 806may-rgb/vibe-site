@@ -7,75 +7,99 @@
 <style>
   :root{--bg:#f4f6fa;--card:#fff;--ink:#1c2430;--mute:#5d6878;--line:#d9dfe8;--brand:#0b5cad;--good:#0d8a4f;--warn:#c25a00}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","PingFang TC",system-ui,sans-serif;line-height:1.6}
-  .wrap{max-width:720px;margin:0 auto;padding:16px}
-  header{padding:8px 0 4px}
-  header .co{color:var(--brand);font-weight:700;font-size:14px;letter-spacing:.05em}
-  h1{margin:2px 0 4px;font-size:24px}
-  header p{margin:0;color:var(--mute);font-size:14px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
-  .card h2{margin:0 0 10px;font-size:17px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  @media(max-width:520px){.grid{grid-template-columns:1fr}}
-  label{display:block;font-size:14px;color:var(--mute)}
-  input{width:100%;margin-top:4px;padding:10px;font-size:16px;border:1px solid var(--line);border-radius:8px;color:var(--ink)}
+  html,body{margin:0;height:100%}
+  body{background:var(--bg);color:var(--ink);font-family:"Microsoft JhengHei","PingFang TC",system-ui,sans-serif;line-height:1.4;font-size:14px}
+  .wrap{max-width:1000px;margin:0 auto;padding:10px 12px;min-height:100%;display:flex;flex-direction:column;gap:8px}
+  header{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  header .co{color:var(--brand);font-weight:700;font-size:13px}
+  h1{margin:0;font-size:20px}
+  .main{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;align-content:start}
+  .col{display:flex;flex-direction:column;gap:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px}
+  .card h2{margin:0 0 6px;font-size:14px;color:var(--mute)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 8px}
+  label{display:block;font-size:12px;color:var(--mute)}
+  input[type=number]{width:100%;margin-top:2px;padding:6px 8px;font-size:16px;border:1px solid var(--line);border-radius:6px;color:var(--ink)}
   input:focus{outline:2px solid var(--brand);border-color:var(--brand)}
-  .hint{font-size:12px;color:var(--mute);margin-top:2px}
-  .verdict{border-radius:12px;padding:16px;text-align:center;font-size:20px;font-weight:700;color:#fff}
-  .verdict small{display:block;font-size:14px;font-weight:400;margin-top:4px}
+  .chk{margin-top:8px;display:flex;gap:6px;align-items:center;color:var(--ink);font-size:13px}
+  .chk input{width:auto;margin:0}
+  .verdict{border-radius:10px;padding:10px;text-align:center;font-size:20px;font-weight:700;color:#fff}
+  .verdict small{display:block;font-size:13px;font-weight:400}
   .v-buy{background:var(--good)}.v-rent{background:var(--brand)}.v-even{background:var(--warn)}
-  table{width:100%;border-collapse:collapse;font-size:15px}
-  th,td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{padding:3px 4px;border-bottom:1px solid var(--line);text-align:right}
   th:first-child,td:first-child{text-align:left}
-  th{color:var(--mute);font-weight:600;font-size:13px}
+  th{color:var(--mute);font-weight:600;font-size:12px}
   tr.total td{font-weight:700;border-bottom:2px solid var(--ink)}
-  .note{font-size:12px;color:var(--mute);margin:8px 0 0}
-  .contact{text-align:center}
-  .contact .name{font-size:17px;font-weight:700}
-  .contact a.btn{display:inline-block;margin-top:8px;padding:12px 22px;background:var(--brand);color:#fff;border-radius:999px;text-decoration:none;font-size:18px;font-weight:700}
-  .qr{margin-top:14px}
-  .qr img{display:block;margin:0 auto;max-width:220px;width:100%;height:auto;border:1px solid var(--line);border-radius:8px}
-  .qr p{margin:6px 0 0;font-weight:700}
-  footer{text-align:center;color:var(--mute);font-size:12px;padding:6px 0 24px}
+  .note{font-size:11px;color:var(--mute);margin:4px 0 0}
+  .contact{display:flex;align-items:center;gap:12px}
+  .contact img{width:120px;height:120px;border:1px solid var(--line);border-radius:6px;flex:none}
+  .contact .info{flex:1;min-width:0}
+  .contact .ask{font-size:13px;color:var(--mute)}
+  .contact .name{font-size:16px;font-weight:700;margin:2px 0 6px}
+  .contact a.btn{display:inline-block;padding:8px 14px;background:var(--brand);color:#fff;border-radius:999px;text-decoration:none;font-size:16px;font-weight:700}
+  .contact .help{margin-top:6px;font-weight:700;font-size:14px}
+  @media(max-width:700px){
+    body{font-size:13px}
+    .wrap{padding:6px 8px;gap:5px}
+    h1{font-size:17px}
+    header .co{font-size:12px}
+    .main{grid-template-columns:1fr;gap:5px}
+    .col{gap:5px}
+    .card{padding:6px 8px}
+    .card h2{display:none}
+    label{font-size:11px}
+    input[type=number]{padding:4px 6px;font-size:15px}
+    .grid{gap:3px 6px}
+    .chk{margin-top:4px;font-size:12px}
+    .verdict{padding:5px;font-size:17px}
+    .verdict small{font-size:12px}
+    th,td{padding:2px 4px;font-size:12px}
+    .note{display:none}
+    .contact{gap:8px}
+    .contact img{width:84px;height:84px}
+    .contact .name{font-size:14px;margin:0 0 4px}
+    .contact .ask{display:none}
+    .contact a.btn{padding:6px 10px;font-size:15px}
+    .contact .help{font-size:12px;margin-top:3px}
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="co">開駿實業有限公司</div>
+    <span class="co">開駿實業有限公司</span>
     <h1>買斷 vs 租賃試算器</h1>
-    <p>輸入你的使用情況，馬上看哪一種比較划算。</p>
   </header>
 
-  <section class="card" aria-labelledby="in">
-    <h2 id="in">① 輸入條件（數字為示範值，請改成實際報價）</h2>
-    <div class="grid">
-      <label>機器售價（元）<input id="price" type="number" inputmode="decimal" min="0" value="120000"></label>
-      <label>使用年限（年）<input id="years" type="number" inputmode="decimal" min="1" step="1" value="5"></label>
-      <label>每月列印張數<input id="pages" type="number" inputmode="decimal" min="0" value="3000"></label>
-      <label>每張耗材成本（元）<input id="cpp" type="number" inputmode="decimal" min="0" step="0.01" value="0.6"></label>
-      <label>買斷：每年保養費（元）<input id="svc" type="number" inputmode="decimal" min="0" value="6000"><span class="hint">原廠保固外的保養／維修預估</span></label>
-      <label>租賃：每月租金（元）<input id="rent" type="number" inputmode="decimal" min="0" value="3200"></label>
+  <div class="main">
+    <div class="col">
+      <section class="card" aria-labelledby="in">
+        <h2 id="in">輸入條件（數字為示範值，請改成實際報價）</h2>
+        <div class="grid">
+          <label>機器售價（元）<input id="price" type="number" inputmode="decimal" min="0" value="120000"></label>
+          <label>使用年限（年）<input id="years" type="number" inputmode="decimal" min="1" step="1" value="5"></label>
+          <label>每月列印張數<input id="pages" type="number" inputmode="decimal" min="0" value="3000"></label>
+          <label>每張耗材成本（元）<input id="cpp" type="number" inputmode="decimal" min="0" step="0.01" value="0.6"></label>
+          <label>買斷：每年保養費（元）<input id="svc" type="number" inputmode="decimal" min="0" value="6000"></label>
+          <label>租賃：每月租金（元）<input id="rent" type="number" inputmode="decimal" min="0" value="3200"></label>
+        </div>
+        <label class="chk"><input id="inc" type="checkbox" checked> 租賃已含保養與耗材</label>
+      </section>
+
+      <section class="card contact">
+        <img src="line-qr.jpg" alt="業務陳小美的 LINE QR code，用 LINE 掃描即可加好友" width="120" height="120">
+        <div class="info">
+          <div class="ask">想要實際報價與機型建議？</div>
+          <div class="name">開駿實業　業務 陳小美</div>
+          <a class="btn" href="tel:0988308585">📞 0988-308-585</a>
+          <div class="help">任何問題請找業務陳小美</div>
+        </div>
+      </section>
     </div>
-    <label style="margin-top:12px;display:flex;gap:8px;align-items:center;color:var(--ink)">
-      <input id="inc" type="checkbox" style="width:auto;margin:0" checked>
-      租賃已含保養與耗材（勾選後，租賃不再另計耗材與保養）
-    </label>
-  </section>
 
-  <section id="result" aria-live="polite"></section>
-
-  <section class="card contact">
-    <div>想要實際報價與機型建議？</div>
-    <div class="name">開駿實業　業務 陳小美</div>
-    <a class="btn" href="tel:0988308585">📞 0988-308-585</a>
-    <div class="qr">
-      <img src="line-qr.jpg" alt="業務陳小美的 LINE QR code，用 LINE 掃描即可加好友" width="220" height="220">
-      <p>任何問題請找業務陳小美</p>
-    </div>
-  </section>
-
-  <footer>試算結果僅供參考，實際金額以正式報價為準。</footer>
+    <div class="col" id="result" aria-live="polite"></div>
+  </div>
 </div>
 
 <script>
@@ -103,14 +127,14 @@
     var cpp=function(t){return totalPages>0?(t/totalPages).toFixed(2):"—";};
     out.innerHTML=
       '<div class="verdict '+cls+'">'+title+'<small>'+sub+'</small></div>'+
-      '<div class="card"><h2>② 成本明細（'+years+' 年）</h2><table>'+
+      '<div class="card"><h2>成本明細（'+years+' 年）</h2><table>'+
       '<tr><th></th><th>買斷</th><th>租賃</th></tr>'+
       '<tr><td>機器／租金</td><td>'+f(buyMachine)+'</td><td>'+f(rentFee)+'</td></tr>'+
       '<tr><td>保養費</td><td>'+f(buySvc)+'</td><td>'+(inc?'含':'0')+'</td></tr>'+
       '<tr><td>耗材</td><td>'+f(consum)+'</td><td>'+(inc?'含':f(consum))+'</td></tr>'+
       '<tr class="total"><td>總成本（元）</td><td>'+f(buy)+'</td><td>'+f(rent)+'</td></tr>'+
       '<tr><td>平均每張（元）</td><td>'+cpp(buy)+'</td><td>'+cpp(rent)+'</td></tr>'+
-      '</table><p class="note">未計稅、未計機器殘值與資金成本；租賃約滿後機器不歸客戶，買斷則仍可繼續使用。</p></div>';
+      '</table><p class="note">未計稅、未計機器殘值與資金成本；試算結果僅供參考，實際金額以正式報價為準。</p></div>';
   }
   ids.forEach(function(i){el[i].addEventListener("input",render);el[i].addEventListener("change",render);});
   render();
